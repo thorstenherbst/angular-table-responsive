@@ -136,23 +136,23 @@ td.mat-column-star {
   }
 
   .mat-column-Fecha{
-    order: 5;
-  }
-
-  .mat-column-Monto{
-    order: 2;
-  }
-
-  .mat-column-Descripcion{
-    order: 3;
-  }
-
-  .mat-column-Tipo{
     order: 1;
   }
 
-  .mat-column-ID{
+  .mat-column-Monto{
+    order: 3;
+  }
+
+  .mat-column-Descripcion{
+    order: 2;
+  }
+
+  .mat-column-Tipo{
     order: 4;
+  }
+
+  .mat-column-ID{
+    order: 5;
   }
 
 

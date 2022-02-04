@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/angula-table-responsive'),
+      dir: require('path').join(__dirname, './coverage/angular-table-responsive'),
       subdir: '.',
       reporters: [
         { type: 'html' },

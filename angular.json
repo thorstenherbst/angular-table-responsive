@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angula-table-responsive": {
+    "angular-table-responsive": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angula-table-responsive",
+            "outputPath": "dist/angular-table-responsive",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -75,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angula-table-responsive:build:production"
+              "browserTarget": "angular-table-responsive:build:production"
             },
             "development": {
-              "browserTarget": "angula-table-responsive:build:development"
+              "browserTarget": "angular-table-responsive:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angula-table-responsive:build"
+            "browserTarget": "angular-table-responsive:build"
           }
         },
         "test": {
@@ -111,5 +111,5 @@
       }
     }
   },
-  "defaultProject": "angula-table-responsive"
+  "defaultProject": "angular-table-responsive"
 }

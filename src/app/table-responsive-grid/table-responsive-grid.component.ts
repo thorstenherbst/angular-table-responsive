@@ -3,28 +3,24 @@ import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { InfoTransaccion } from '../models/infoTransaccion.model';
 import { DataService } from '../services/data.service';
-
-
+import { InfoTransaccion } from '../models/infoTransaccion.model';
 
 @Component({
-  selector: 'app-table-responsive',
-  templateUrl: './table-responsive.component.html',
-  styleUrls: ['./table-responsive.component.scss']
+  selector: 'app-table-responsive-grid',
+  templateUrl: './table-responsive-grid.component.html',
+  styleUrls: ['./table-responsive-grid.component.scss']
 })
-export class TableResponsiveComponent implements OnInit {
+export class TableResponsiveGridComponent implements OnInit {
 
   constructor(private data:DataService) {
-    this.TEST_DATA= data.testArrayData; //Data test service
- }
+     this.TEST_DATA= data.testArrayData; //Data test service
+  }
 
- public TEST_DATA;
+  public TEST_DATA;
 
   displayedColumns: string[] = ['Fecha', 'ID', 'Tipo', 'Descripcion','Monto', 'star'];
-  dataSource = new MatTableDataSource<InfoTransaccion>(this.data.testArrayData);//Data Test
-
-  public getScreenWidth: any;
+  dataSource = new MatTableDataSource<InfoTransaccion>(this.data.testArrayData);//Data test
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort| any;
@@ -34,14 +30,6 @@ export class TableResponsiveComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  //Detectando el width de la pantalla
-    @HostListener('window:resize', ['$event'])
-    onWindowResize() {
-      this.getScreenWidth = window.innerWidth;
-      console.log(this.getScreenWidth);
-    }
- //---------
-
   applyFilter(filterValue: any) {
     const myFilterValue=filterValue.target.value;
     this.dataSource.filter = myFilterValue.trim().toLowerCase();
@@ -50,6 +38,5 @@ export class TableResponsiveComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
 }
 

@@ -50,24 +50,12 @@ td.mat-column-star {
       box-sizing: border-box;
     }
 
-    /*
     .mat-row {
-      display: block;
-      overflow: hidden;
-      height: auto;
-      position: relative;
-      clear: both;
-      box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
-      background-color: #fff;
-      border-radius: 3px;
-      + .mat-row {
-        margin-top: 24px;
-      }
-    }
-    */
-    .mat-row {
-      display: flex; /*new */
-      flex-direction: column;/*new */
+      display: grid; /*new */
+      grid-template-columns:[col] 50% [col] 50%;
+      grid-template-rows: [row] auto [row] auto [row] ;
+      gap: 5px;
+      /*flex-direction: column;new */
       overflow: hidden;
       height: auto;
       position: relative;
@@ -137,22 +125,30 @@ td.mat-column-star {
 
   .mat-column-Fecha{
     order: 1;
+    background-color: aqua;
+    grid-column: col/span 2; /* expanding to 2 colums */
   }
 
   .mat-column-Monto{
-    order: 3;
+   order: 2;
+   background-color: blueviolet;
   }
 
   .mat-column-Descripcion{
-    order: 2;
+    order: 4;
+    background-color: brown;
+
   }
 
   .mat-column-Tipo{
-    order: 4;
+    order: 3;
+    background-color: chartreuse;
   }
 
   .mat-column-ID{
     order: 5;
+    background-color: cornflowerblue;
+    grid-column: col/span 2; /* expanding to 2 colums */
   }
 
 

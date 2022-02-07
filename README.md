@@ -3,7 +3,13 @@
  https://www.linkedin.com/in/jolivaress
 
 # AngularTableResponsive
+This project shows the way to change from material table (desktop) to cards views on mobile.
+There are two examples:
 
+-Using Flex   path->  /home
+
+-Using Grid   path-> /table-grid
+  
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
 
 ## Development server

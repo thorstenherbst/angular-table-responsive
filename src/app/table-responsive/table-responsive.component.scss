@@ -157,3 +157,96 @@ td.mat-column-star {
 
 
 }
+
+
+
+
+$icon-classes: (
+  icon-pin: '\1F4CC',   // Push Pin
+  icon-star: '\2605',   // Star
+  icon-check: '\2713',  // Check
+  icon-info: '\2139'    // Info
+);
+
+$colors: (
+  icon-pin: red,
+  icon-star: orange,
+  icon-check: green,
+  icon-info: blue
+);
+
+$base-indent: 1em;
+$max-depth: 10;
+
+
+@mixin icon-list-recursive($depth: 1, $parent-selectors: ()) {
+  @if $depth <= $max-depth {
+    $selectors: ();
+
+    // Kombiniere aktuelle Tiefe mit vererbten icon-Klassen
+    @each $icon-class, $icon in $icon-classes {
+      $new-selectors: ();
+
+      // 1. direkt gesetzte Klasse
+      $this-selector: '.nested-list #{'ul ' * ($depth - 1)}ul.#{$icon-class} > li';
+      $new-selectors: append($new-selectors, $this-selector, comma);
+
+      // 2. geerbte Klasse aus parent-selectors
+      @each $parent in $parent-selectors {
+        $inherited: '.nested-list #{$parent} #{'ul ' * ($depth - 1)}ul:not([class*="icon-"]) > li';
+        $new-selectors: append($new-selectors, $inherited, comma);
+      }
+
+      // Regel definieren
+      #{$new-selectors} {
+        position: relative;
+        padding-left: $base-indent * $depth;
+
+        &::before {
+          content: $icon;
+          position: absolute;
+          left: $base-indent * ($depth - 1);
+          color: map-get($colors, $icon-class);
+        }
+
+        // Responsive (Bootstrap 4)
+        @media (min-width: 576px) {
+          padding-left: $base-indent * 1.5 * $depth;
+          &::before {
+            left: $base-indent * 1.5 * ($depth - 1);
+          }
+        }
+
+        @media (min-width: 768px) {
+          padding-left: $base-indent * 2 * $depth;
+          &::before {
+            left: $base-indent * 2 * ($depth - 1);
+          }
+        }
+
+        @media (min-width: 992px) {
+          padding-left: $base-indent * 2.5 * $depth;
+          &::before {
+            left: $base-indent * 2.5 * ($depth - 1);
+          }
+        }
+
+        @media (min-width: 1200px) {
+          padding-left: $base-indent * 3 * $depth;
+          &::before {
+            left: $base-indent * 3 * ($depth - 1);
+          }
+        }
+      }
+    }
+
+    // Nächste Ebene aufrufen & icon-* Klassen als Eltern mitgeben
+    $new-parents: ();
+    @each $class, $icon in $icon-classes {
+      $selector: '.#{$class}';
+      $new-parents: append($new-parents, $selector, comma);
+    }
+
+    @include icon-list-recursive($depth + 1, $new-parents);
+  }
+}

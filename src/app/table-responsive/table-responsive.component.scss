@@ -250,3 +250,4 @@ $max-depth: 10;
     @include icon-list-recursive($depth + 1, $new-parents);
   }
 }
+
